@@ -1,0 +1,13 @@
+{
+  "extends": "@specialblend/eslint-config/mixed",
+  "rules": {
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "valid-jsdoc": "off",
+    "no-void": "off",
+    "no-inner-declarations": "off",
+    "init-declarations": "off"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "rootDir": "src",
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "outDir": "./lib",
+    "declaration": true,
+    "resolveJsonModule": true,
+    "lib": ["dom", "ES2015"]
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "__mocks__",
+    "**/*.test.ts",
+    "**/*.test.js"
+  ]
+}
