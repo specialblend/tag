@@ -1,6 +1,6 @@
 {
   "name": "@specialblend/tag",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "utility tag objects",
   "main": "lib/tag.js",
   "types": "lib/tag.d.ts",
@@ -33,5 +33,7 @@
     "jest-extended": "^0.11.5",
     "typescript": "^4.0.3"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }
