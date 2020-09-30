@@ -7,6 +7,7 @@ import {
     Tag,
     tag,
     tags,
+    vtags,
 } from './tag';
 
 describe('tag', () => {
@@ -126,6 +127,54 @@ describe('tags', () => {
                     expect($tag.toValue()).toBe(value);
                     expect($tag.toString()).toBe(name);
                 });
+            });
+        });
+    });
+});
+
+describe('vtags', () => {
+    test('is Function', () => {
+        expect(vtags).toBeFunction();
+    });
+    describe('when called', () => {
+        describe('with no namespace', () => {
+
+            const $tag_data = [
+                ['name:alpha', Symbol.for('data:alpha'), Symbol.for('key:alpha')],
+                ['name:bravo', Symbol.for('data:bravo'), Symbol.for('key:bravo')],
+                ['name:charlie', Symbol.for('data:charlie'), Symbol.for('key:charlie')],
+            ];
+
+            // @ts-ignore
+            const $tags = vtags($tag_data);
+
+            test('returns expected tags', () => {
+                expect($tags).toBeArrayOfSize(3);
+                const [$alpha, $bravo, $charlie] = $tags;
+                expect($alpha).toBeInstanceOf(Tag);
+                expect($alpha).toMatchObject(
+                    {
+                        name: $alpha.toString(),
+                        value: Symbol.for('data:alpha'),
+                        key: Symbol.for('key:alpha'),
+                    },
+                );
+                expect($bravo).toBeInstanceOf(Tag);
+                expect($bravo).toMatchObject(
+                    {
+                        name: $bravo.toString(),
+                        value: Symbol.for('data:bravo'),
+                        key: Symbol.for('key:bravo'),
+                    },
+                );
+                expect($charlie).toBeInstanceOf(Tag);
+                expect($charlie).toMatchObject(
+                    {
+                        name: $charlie.toString(),
+                        value: Symbol.for('data:charlie'),
+                        key: Symbol.for('key:charlie'),
+                    },
+                );
             });
         });
     });

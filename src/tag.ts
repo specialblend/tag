@@ -31,6 +31,10 @@ export class Tag<TValue, TKey> {
     }
 }
 
+function with_namespace_prefix(_namespace: string, tag_name: string) {
+   return `\$${_namespace}->${tag_name}`;
+}
+
 export function tag(
     name: string,
     value = <any>name,
@@ -39,8 +43,14 @@ export function tag(
     return new Tag<any, symbol>(name, value, key);
 }
 
-export function tags(names: string[], _namespace = '') {
+export function tags(names: string[], _namespace: string = '') {
     return names.map(
-        (tag_name: string) => tag(`\$${_namespace}->${tag_name}`)
+        (name: string) => tag(with_namespace_prefix(_namespace, name))
     );
+}
+
+export function vtags(tags: [string, any, any], _namespace: string = '') {
+    return tags.map(
+        ([name, value, key]) => tag(with_namespace_prefix(_namespace, name), value, key)
+    )
 }
